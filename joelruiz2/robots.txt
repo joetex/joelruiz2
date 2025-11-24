@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap (replace with your site URL if you have one)
+Sitemap: https://joelruiz2.com/sitemap.xml
+
+# If you want to block crawling of certain paths, add lines like:
+# Disallow: /admin/
