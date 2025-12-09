@@ -54,6 +54,10 @@ export function About() {
                 </li>
                 <li className="flex items-start justify-start gap-3 mt-1">
                   <span className="text-accent font-bold ">•</span>
+                  <span className="text-muted-foreground">Distributed Systems</span>
+                </li>
+                <li className="flex items-start justify-start gap-3 mt-1">
+                  <span className="text-accent font-bold ">•</span>
                   <span className="text-muted-foreground">Database Engineer</span>
                 </li>
                 <li className="flex items-start justify-start gap-3 mt-1">

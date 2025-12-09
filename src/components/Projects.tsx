@@ -11,8 +11,8 @@ const ProjectList = [
     id: 'ibm-training',
     title: 'IBM Training',
     description:
-      'IBM Training helps you learn IBM products and services with interactive labs, quizzes, and progress tracking.',
-    technologies: ['React', 'Node.js', 'Express', 'Db2', 'Carbon Design'],
+      'IBM Training helps you learn IBM products and services with interactive labs, quizzes, and progress tracking. I designed the distributed system architecture and implemented the backend services.',
+    technologies: ['React', 'Node.js', 'IBM Cloud', 'Microservices', 'Elastic Search', 'Db2', 'Carbon Design'],
     visit_url: 'https://www.ibm.com/training',
     type: 'image',
     media_url: 'https://joelruiz2.com/assets/ibmtraining.webp',
@@ -22,8 +22,8 @@ const ProjectList = [
     id: 'ibm-techxchange',
     title: 'IBM TechXchange',
     description:
-      'IBM TechXchange is the ultimate learning hub for developers, technologists, and techies looking to grow their skills.',
-    technologies: ['WordPress', 'Carbon Design', 'MySQL', 'Kubernetes'],
+      'IBM TechXchange is the ultimate learning hub for developers, technologists, and techies looking to grow their skills.  Led the frontend team in delivering a unified experience between TXC and IBM Training.',
+    technologies: ['WordPress', 'IBM Cloud', 'Carbon Design', 'MySQL', 'Kubernetes'],
     visit_url: 'https://www.ibm.com/community/techxchange/',
     type: 'image',
     media_url: 'https://joelruiz2.com/assets/ibmtechxchange.webp',
@@ -34,7 +34,7 @@ const ProjectList = [
     id: 'acosgames',
     title: 'ACOS Platform',
     description:
-      'Game + Developer portal for submissions created in JavaScript.  Supports replays, leaderboards, achievements, stats, and more.',
+      'Game + Developer portal for submissions created in JavaScript.  Designed in scalable distributed system components.  Supports replays, leaderboards, achievements, stats, and more.',
     technologies: ['Multiplayer', 'JavaScript Sandboxing', 'WebSockets', 'Message Queue', 'GitHub Integration', 'Discord Integration', 'Matchmaking System', 'Leaderboards', 'Achievements', 'Stats', 'Game SDK'],
     github_url: 'https://github.com/acosgames',
     type: 'video',
@@ -44,8 +44,8 @@ const ProjectList = [
     id: 'acosgames',
     title: 'ACOS Simulator',
     description:
-      'Simulator for developing JavaScript games for the ACOS platform.',
-    technologies: ['Multiplayer', 'JavaScript Sandboxing', 'WebSockets', 'Message Queue', 'GitHub Integration', 'Discord Integration', 'Matchmaking System', 'Leaderboards', 'Achievements', 'Stats', 'Game SDK'],
+      'Simulator for developing JavaScript games for the ACOS platform.  Supports multiple screens, game configuration, and debugging tools for network and performance.',
+    technologies: ['Multiple Screens', 'Managed Timer', 'Managed JSON State', 'Network Encapsulation', 'Debugging Tools', 'Deployments', 'Hot Reloading', 'Game SDK'],
     github_url: 'https://github.com/acosgames',
     type: 'video',
     media_url: 'https://joelruiz2.com/assets/ACOS-Simulator-Demo.mp4',
@@ -61,6 +61,16 @@ const ProjectList = [
     media_url: 'https://joelruiz2.com/assets/MinMaxBTree.png',
   },
   {
+    id: 'streamracingwheel',
+    title: 'Stream Racing Wheel Overlay',
+    description:
+      'This customizable react application lets you connect to your G920 Racing Wheel or any steering wheel gamepad and show a visual representation of the controls as an overlay for streamers.',
+    technologies: ['React', 'Streaming', 'Racing Wheel', 'Controller Telemetry'],
+    github_url: 'https://github.com/joetex/stream-racing-wheel',
+    type: 'video',
+    media_url: 'https://joelruiz2.com/assets/FordRaptor-StreamRacingWheelOverlay.mp4',
+  },
+  {
     id: 'bambutelemetry',
     title: 'Bambu Telemetry',
     description:
@@ -69,6 +79,26 @@ const ProjectList = [
     github_url: 'https://github.com/joetex/bambu-telemetry-stream-overlay',
     type: 'image',
     media_url: 'https://joelruiz2.com/assets/BambuTelemetry.webp',
+  },
+    {
+    id: 'citydevour',
+    title: 'City Devour Game',
+    description:
+      'You start small. You eat a thing. You eat another thing. You burp and grow bigger. By the end of the day, you have eaten a whole city, even the buildings.',
+    technologies: ['Unity', 'C#', 'Photon Networking', 'Leaderboards'],
+    play_url: 'https://play.google.com/store/apps/details?id=com.acos.citydevour&hl=en_US',
+    type: 'video',
+    media_url: 'https://joelruiz2.com/assets/Void.io%20Promo%20Video.mp4',
+  },
+   {
+    id: 'slitheriobot',
+    title: 'Slither.io AStar Bot',
+    description:
+      'Created a bot for the popular game Slither.io using the A* pathfinding algorithm to navigate and collect pellets while avoiding other players.',
+    technologies: ['JavaScript', 'A* Algorithm', 'Behavior System', 'Tampermonkey'],
+    github_url: 'https://github.com/joetex/SlitherAStar/',
+    type: 'video',
+    media_url: 'https://joelruiz2.com/assets/SlitherIOAStarBot.mp4',
   },
 ];    
 
@@ -169,6 +199,20 @@ export function Projects() {
             >
               <a href={project.visit_url} className="flex  justify-end" target="_blank" rel="noopener noreferrer">
                 Visit Website
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </Button>
+            )}
+
+            {project.play_url && (
+                          <Button
+              size="sm"
+              variant="outline"
+              className="w-42 gap-2 hover:bg-accent hover:text-accent-foreground hover:border-accent"
+              asChild
+            >
+              <a href={project.play_url} className="flex  justify-end" target="_blank" rel="noopener noreferrer">
+                Play on Google Play
                 <ArrowRight className="w-4 h-4" />
               </a>
             </Button>
