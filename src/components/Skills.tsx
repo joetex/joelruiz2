@@ -1,5 +1,6 @@
 // import { useEffect, useState } from 'react';
 import { Card } from './ui/card';
+import { SectionHeading } from './SectionHeading';
 
 import IBMCloud from '../assets/ibm_cloud-icon.svg';
 import Jenkins from '../assets/Jenkins.svg';
@@ -202,10 +203,12 @@ export function Skills() {
   }
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-secondary/30">
-      <div className="max-w-5xl mx-auto">
-        <div className="mb-6 flex justify-center">
-          <h2 className="text-5xl font-bold">I know these <span className="text-accent">technologies</span></h2>
+    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-secondary/40 border-y border-border">
+      <div className="max-w-6xl mx-auto">
+        <div>
+          <SectionHeading index="04" label="skills">
+            I know these <span className="text-accent">technologies</span>
+          </SectionHeading>
           {/* <div>
             <button
               onClick={() => setShowLabels((s) => !s)}
@@ -218,18 +221,18 @@ export function Skills() {
 
         <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
           {skillCategories.map((category) => (
-            <Card key={category.title} className="p-6  border-accent/10 hover:border-accent/30 transition-colors">
-              <h3 className="text-xl font-semibold mb-4 ">{category.title}</h3>
-              <div className="flex flex-wrap justify-center gap-2">
+            <Card key={category.title} className="p-6 bg-background border-border shadow-none">
+              <h3 className="font-mono text-sm text-accent mb-5">{category.title}</h3>
+              <div className="grid grid-cols-[repeat(auto-fill,minmax(5.5rem,1fr))] gap-2">
                 {category.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="bg-foreground/5 flex flex-col items-center justify-center w-20 h-28 gap-2 p-2 rounded-full hover:shadow-sm transition-transform transform hover:-translate-y-0.5 cursor-default"
+                    className="flex flex-col items-center justify-center h-24 gap-2 p-2 rounded-lg border border-transparent hover:border-accent/40 hover:bg-accent/5 transition-colors cursor-default"
                     title={skill}
                   >
                     {renderIcon(skill)}
                     
-                    <span className="text-xs font-medium  text-center mt-1">{skill}</span>
+                    <span className="text-xs text-muted-foreground text-center leading-tight">{skill}</span>
                     
                   </span>
                 ))}

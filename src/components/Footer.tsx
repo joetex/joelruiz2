@@ -10,18 +10,18 @@ export function Footer() {
   ];
 
   return (
-    <footer className="border-t border-border bg-secondary/30">
+    <footer className="border-t border-border bg-secondary/40">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
-            <h3 className="text-lg font-bold text-accent mb-2">dev.</h3>
+            <p className="font-mono text-lg font-medium mb-2">joelruiz2<span className="text-accent">_</span></p>
             <p className="text-sm text-muted-foreground">
               Full-stack developer crafting elegant digital solutions.
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
+            <h4 className="font-mono text-sm text-accent mb-4">links</h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <a href="#home" className="text-muted-foreground hover:text-accent transition-colors">
@@ -42,8 +42,8 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Connect</h4>
-            <div className="flex gap-4 items-center justify-center">
+            <h4 className="font-mono text-sm text-accent mb-4">connect</h4>
+            <div className="flex gap-4 items-center">
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}

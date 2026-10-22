@@ -4,11 +4,12 @@
 // import * as z from 'zod';
 // import { supabase } from '../lib/supabase';
 import { Card } from './ui/card';
+import { SectionHeading } from './SectionHeading';
 // import { Button } from './ui/button';
 // import { Input } from './ui/input';
 // import { Textarea } from './ui/textarea';
 // import { toast } from 'sonner';
-import { Mail, Github, Linkedin } from 'lucide-react';
+import { Mail, Github, Linkedin, ArrowUpRight } from 'lucide-react';
 
 // const contactSchema = z.object({
 //   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -74,17 +75,19 @@ export function Contact() {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
-        <div className="mb-12">
-          <h2 className="text-5xl font-bold mb-4">Let us <span className="text-accent">talk!</span></h2>
+    <section className="py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
+        <div>
+          <SectionHeading index="05" label="contact">
+            Let us <span className="text-accent">talk!</span>
+          </SectionHeading>
           {/* <div className="w-20 h-1 bg-accent rounded-full" /> */}
           {/* <p className="text-muted-foreground mt-4">
             I am looking for employment. I'd love to hear from you. Send me a message and I'll get back to you as soon as possible.
           </p> */}
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* <div className="lg:col-span-2">
             <Card className="p-8 border-accent/10">
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -147,27 +150,27 @@ export function Contact() {
             </Card>
           </div> */}
 
-            <Card className="p-6 bg-foreground/5 border-accent/20">
-              <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
+            <Card className="p-6 bg-card border-border shadow-none">
+              <h3 className="font-mono text-sm text-accent mb-5">contact info</h3>
               <div className="space-y-4">
                 <div>
                   <p className="text-sm text-muted-foreground mb-1">Email</p>
                   <a
                     href="mailto:me@joelruiz2.com"
-                    className="text-accent hover:underline font-medium"
+                    className="text-lg font-medium text-foreground hover:text-accent underline decoration-accent/40 underline-offset-4 transition-colors"
                   >
                     me@joelruiz2.com
                   </a>
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground mb-1">Location</p>
-                  <p className="font-medium">Austin, TX</p>
+                  <p className="text-lg font-medium">Austin, TX</p>
                 </div>
               </div>
             </Card>
 
-            <Card className="p-6 border-accent/10">
-              <h3 className="text-lg font-semibold mb-4">Connect With Me</h3>
+            <Card className="p-6 bg-card border-border shadow-none">
+              <h3 className="font-mono text-sm text-accent mb-5">connect</h3>
               <div className="space-y-3">
                 {socialLinks.map(({ icon: Icon, href, label }) => (
                   <a
@@ -175,10 +178,11 @@ export function Contact() {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
+                    className="group flex items-center gap-3 p-3 rounded-lg border border-border hover:border-accent/60 hover:bg-accent/5 transition-colors"
                   >
                     <Icon className="w-5 h-5 text-accent" />
                     <span className="font-medium">{label}</span>
+                    <ArrowUpRight className="ml-auto w-4 h-4 text-muted-foreground group-hover:text-accent transition-colors" />
                   </a>
                 ))}
               </div>

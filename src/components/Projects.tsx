@@ -4,14 +4,26 @@ import { Card } from './ui/card';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import {  ArrowRight, Github } from 'lucide-react';
+import { SectionHeading } from './SectionHeading';
 // import { Arrow } from '@radix-ui/react-context-menu';
 
 const ProjectList = [
-    {
+  {
+    id: 'authrot',
+    title: 'Authrot',
+    description:
+      'A writing studio, reader, and wiki platform for authors to draft their stories, publish them for readers, and build out the worlds behind them.',
+    technologies: ['Writing Studio', 'Reader', 'Wiki'],
+    visit_url: 'https://authrot.app',
+    type: 'video',
+    media_url: 'https://assets.authrot.app/marketing/video/hero.8be182d9.mp4',
+    github_url: null,
+  },
+  {
     id: 'ibm-training',
     title: 'IBM Training',
     description:
-      'IBM Training helps you learn IBM products and services with interactive labs, quizzes, and progress tracking. I designed the distributed system architecture and implemented the backend services.',
+      'IBM Training delivers strategic technical product training, integrating with many learning providers to help customers skill up and get certified. I designed the distributed system architecture, the subscription purchasing system ($49M in 2024), and the backend services.',
     technologies: ['React', 'Node.js', 'IBM Cloud', 'Microservices', 'Elastic Search', 'Db2', 'Carbon Design'],
     visit_url: 'https://www.ibm.com/training',
     type: 'image',
@@ -128,59 +140,61 @@ export function Projects() {
   }, []);
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 ">
-      <div className="max-w-5xl mx-auto">
-        <div className="mb-10">
-          <h2 className="text-5xl font-bold ">A few of my <span className="text-accent">recent projects</span></h2>
-          {/* <div className="w-h h-1 bg-accent rounded-full" /> */}
-        </div>
+    <section className="py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
+        <SectionHeading index="03" label="projects">
+          A few of my <span className="text-accent">recent projects</span>
+        </SectionHeading>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {ProjectList.map((project) => (
         <Card
           key={project.id}
-          className="p-6 border-accent/10 hover:border-accent/30 hover:shadow-lg transition-all duration-300 overflow-hidden group flex flex-col"
+          className="p-0 gap-0 border-border shadow-none hover:border-accent/50 hover:-translate-y-1 transition-all duration-300 overflow-hidden group flex flex-col"
         >
-          <h3 className="text-xl font-semibold mb-4 text-foreground">{project.title}</h3>
-
-          
-          {project.type === 'image' && (
-            <div className="flex flex-wrap mb-4 justify-center rounded-md overflow-hidden">
-              <img src={project.media_url} alt={project.title} className="w-full rounded-base min-h-48 max-h-60" />
-            </div>
-          )}
-          {project.type === 'video' && (  
-          <div className="flex flex-wrap mb-4 justify-center rounded-md overflow-hidden min-h-60 max-h-60">
-            <video className="w-full rounded-base" controls>
-              <source src={project.media_url} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+          <div className="aspect-video overflow-hidden border-b border-border bg-secondary">
+            {project.type === 'image' && (
+              <img
+                src={project.media_url}
+                alt={project.title}
+                loading="lazy"
+                className="h-full w-full object-cover object-top-left transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+            )}
+            {project.type === 'video' && (
+              <video className="h-full w-full object-cover" controls muted playsInline preload="metadata">
+                <source src={project.media_url} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            )}
           </div>
-          )}
 
-          <p className="text-muted-foreground mb-4  leading-relaxed  text-sm">
+          <div className="p-6 flex flex-col flex-1">
+          <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-accent transition-colors">{project.title}</h3>
+
+          <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
              {project.description}  
           </p>
          
-          <div className="mb-4 flex flex-wrap gap-2 mt-4">
+          <div className="flex flex-wrap gap-2">
             {project.technologies.map((tech: any) => (
               <Badge
                 key={tech}
-                variant="secondary"
-                className="bg-accent/10 text-accent text-xs"
+                variant="outline"
+                className="font-mono font-normal border-accent/25 bg-accent/5 text-accent text-xs"
               >
                 {tech}
               </Badge>
             ))}
           </div>
 
-          <div className="flex-1 flex items-end justify-end gap-3 pt-4">
+          <div className="flex-1 flex flex-wrap items-end justify-end gap-3 pt-6">
 
             {project.github_url && (
                           <Button
               size="sm"
               variant="outline"
-              className="w-50 gap-2 hover:bg-white hover:text-accent-foreground hover:border-white"
+              className="gap-2 bg-transparent hover:bg-foreground hover:text-background hover:border-foreground"
               asChild
             >
               <a href={project.github_url} target="_blank" rel="noopener noreferrer">
@@ -194,10 +208,10 @@ export function Projects() {
                           <Button
               size="sm"
               variant="outline"
-              className="w-32 gap-2 hover:bg-accent hover:text-accent-foreground hover:border-accent"
+              className="gap-2 bg-transparent hover:bg-accent hover:text-accent-foreground hover:border-accent"
               asChild
             >
-              <a href={project.visit_url} className="flex  justify-end" target="_blank" rel="noopener noreferrer">
+              <a href={project.visit_url} target="_blank" rel="noopener noreferrer">
                 Visit Website
                 <ArrowRight className="w-4 h-4" />
               </a>
@@ -208,15 +222,16 @@ export function Projects() {
                           <Button
               size="sm"
               variant="outline"
-              className="w-42 gap-2 hover:bg-accent hover:text-accent-foreground hover:border-accent"
+              className="gap-2 bg-transparent hover:bg-accent hover:text-accent-foreground hover:border-accent"
               asChild
             >
-              <a href={project.play_url} className="flex  justify-end" target="_blank" rel="noopener noreferrer">
+              <a href={project.play_url} target="_blank" rel="noopener noreferrer">
                 Play on Google Play
                 <ArrowRight className="w-4 h-4" />
               </a>
             </Button>
             )}
+          </div>
           </div>
         </Card>
         ))}

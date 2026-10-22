@@ -1,7 +1,7 @@
-import './App.css';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
+import { Experience } from './components/Experience';
 import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
 import { Contact } from './components/Contact';
@@ -12,31 +12,26 @@ function App() {
   return (
     <>
       <Header />
-      <main className="pt-4 w-full">
-        <div >
-          <Hero />
-        </div>
-        <a className="relative bottom-5"  id="about"></a>
-        <div >
+      <main id="home" className="w-full">
+        <Hero />
+        <div id="about" className="scroll-mt-16">
           <About />
         </div>
-        
-        <a className="relative bottom-5"  id="projects"></a>
-        <div >
+        <div id="experience" className="scroll-mt-16">
+          <Experience />
+        </div>
+        <div id="projects" className="scroll-mt-16">
           <Projects />
         </div>
-        
-        <a className="relative bottom-5" id="skills"></a>
-        <div>
+        <div id="skills" className="scroll-mt-16">
           <Skills />
         </div>
-        <a className="relative bottom-5"  id="contact"></a>
-        <div >
+        <div id="contact" className="scroll-mt-16">
           <Contact />
         </div>
       </main>
       <Footer />
-      <Toaster position="bottom-right" />
+      <Toaster position="bottom-right" theme="dark" />
     </>
   );
 }
