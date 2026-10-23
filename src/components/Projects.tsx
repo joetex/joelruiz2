@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 // import { supabase, type Project } from '../lib/supabase';
 import { Card } from './ui/card';
 import { Badge } from './ui/badge';
@@ -17,6 +17,7 @@ const ProjectList = [
     visit_url: 'https://authrot.app',
     type: 'video',
     media_url: 'https://assets.authrot.app/marketing/video/hero.8be182d9.mp4',
+    autoplay: true,
     github_url: null,
   },
   {
@@ -112,8 +113,40 @@ const ProjectList = [
     type: 'video',
     media_url: 'https://joelruiz2.com/assets/SlitherIOAStarBot.mp4',
   },
-];    
+];
 
+
+// Plays when at least half the video is on screen, pauses when it scrolls away.
+// Must stay muted, since browsers block autoplay with sound.
+function AutoplayVideo({ src }: { src: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <video ref={videoRef} className="h-full w-full object-cover" controls muted loop playsInline preload="metadata">
+      <source src={src} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  );
+}
 
 export function Projects() {
   // const [projects, setProjects] = useState<any[]>([]);
@@ -161,7 +194,8 @@ export function Projects() {
                 className="h-full w-full object-cover object-top-left transition-transform duration-500 group-hover:scale-[1.03]"
               />
             )}
-            {project.type === 'video' && (
+            {project.type === 'video' && project.autoplay && <AutoplayVideo src={project.media_url} />}
+            {project.type === 'video' && !project.autoplay && (
               <video className="h-full w-full object-cover" controls muted playsInline preload="metadata">
                 <source src={project.media_url} type="video/mp4" />
                 Your browser does not support the video tag.
